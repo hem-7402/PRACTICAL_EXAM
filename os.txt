@@ -1,0 +1,298 @@
+CREATE TABLE student_data (
+    s_id NUMBER(10) PRIMARY KEY,
+    s_nm VARCHAR2(50),
+    per NUMBER(5,2),
+    class VARCHAR2(10),
+    dob DATE,
+    city VARCHAR2(50)
+);
+
+INSERT INTO student_data (s_id, s_nm, per, class, dob, city) VALUES
+(5, 'Bob White', 91.10, '12th', TO_DATE('2004-07-18', 'YYYY-MM-DD'), 'Phoenix')
+
+select * from student_data;
+ 
+
+
+select * from dual
+select lower('bhavin') from dual;
+select upper('bhavin') from dual;
+select substr('bhavin',2,5) from dual;
+select initcap('bhavin') from dual;
+SELECT LPAD('abc', 10, '*') FROM dual;
+SELECT RPAD('abc', 10, '*') FROM dual;
+SELECT LENGTH('abc') FROM dual;
+SELECT instr('abc','a') FROM dual;
+SELECT ascii('k') FROM dual;
+
+
+
+select abs(-543.64) from dual;
+select round(54.64) from dual;
+select sqrt(225) from dual;
+select mod(15,7) from dual;
+select floor(35.564) from dual;
+select ceil(35.564) from dual;
+select exp(35.564) from dual;
+select greatest(3,5,6,3,64,23) from dual;
+SELECT LEAST(0, 23, 3, 4, 5643) FROM dual;
+
+
+
+select sum(S_ID) from student_data
+select min(s_id) from student_data
+select max(s_id) from student_data
+select min(s_id) from student_data
+select count(*) from student_data;
+select * from student_data
+
+
+
+select to_date(sysdate,'dd-mm-yy') from dual;
+select add_months(sysdate,1) from dual;
+select last_day(sysdate) from dual;
+select months_between('31-dec-2015','31-dec-2025') from dual;
+select next_day(sysdate,'sunday') from dual;
+select extract(year from sysdate) from dual;
+select extract(month from sysdate) from dual;
+select systimestamp from dual;
+
+table 1 *************
+
+create table client_master_23 
+(clientno varchar(6)primary key, 
+name varchar(15)not null, 
+address1 varchar(5), 
+address2 varchar(5), 
+city varchar(15), 
+pincode number(6), 
+state varchar(15), 
+baldue number(10,2), 
+constraint chk_client check (clientno like 'C%'));
+
+INSERT INTO client_master_23 VALUES ('C00001', 'Rakesh Joshi', '', '', 'Mumbai', 400054, 'Maharashtra', 15000);
+INSERT INTO client_master_23 VALUES ('C00002', 'Mayur Patel', '', '', 'Madras', 780001, 'Tamilnadu', 0);
+INSERT INTO client_master_23 VALUES ('C00003', 'Ishita Mehata', '', '', 'Mumbai', 400057, 'Maharashtra', 5000);
+INSERT INTO client_master_23 VALUES ('C00004', 'Amit Solanki', '', '', 'Bangalore', 560001, 'Karnataka', 0);
+INSERT INTO client_master_23 VALUES ('C00005', 'Hiren Pandya', '', '', 'Mumbai', 400060, 'Maharashtra', 2000);
+INSERT INTO client_master_23 VALUES ('C00006', ' Dipak Sharma','','','Bangalore',560001,'Karnataka',0)
+
+
+table 2 ****************
+
+
+ create table product_master_23 
+ (productno varchar(6)primary key, 
+ description varchar(15)not null, 
+ profitpercent number(4,2)not null, 
+ unitmaster varchar(7)not null, 
+ qtyonhand number(4)not null, 
+ reorderlvl number(3)not null, 
+ sellprice number(5,2)not null, 
+ costprice number(5,2)not null, 
+ constraint chk_productno check (productno like 'P%'), 
+ constraint chk_sellprice check (sellprice!=0), 
+ constraint chk_costprice check (costprice!=0)); 
+
+
+INSERT INTO product_master_23 VALUES ('P00001', 'T-Shirt', 5, 'piece', 200, 50, 350, 250);
+INSERT INTO product_master_23 VALUES ('P0345', 'Shirt', 5, 'piece', 150, 50, 500, 350);
+INSERT INTO product_master_23 VALUES ('P06734', 'Cotton Jeans', 5, 'piece', 100, 20, 600, 450);
+INSERT INTO product_master_23 VALUES ('P07865', 'Jeans', 5, 'piece', 200, 60, 750, 550);
+INSERT INTO product_master_23 VALUES ('P07868', 'Trouser', 2, 'piece', 150, 50, 850, 550);
+INSERT INTO product_master_23 VALUES ('P07885', 'Pull Over', 2.5, 'piece', 80, 30, 700, 450);
+INSERT INTO product_master_23 VALUES ('P07965', 'Denim Shirt', 4, 'piece', 100, 40, 350, 250);
+INSERT INTO product_master_23 VALUES ('P07975', 'Lycra Tops', 7, 'piece', 70, 30, 300, 175);
+INSERT INTO product_master_23 VALUES ('P08865', 'Skirts', 5, 'piece', 75, 30, 450, 300);
+
+SELECT * FROM product_master_23
+
+
+table 3 ***********
+
+create table salesman_master_23 
+ (salesmanno varchar(6)primary key, 
+ salesmanname varchar(15)not null, 
+ address1 varchar(10)not null, 
+ address2 varchar(10), 
+ city varchar(10), 
+ pincode number(6), 
+ state varchar(12), 
+ salamt number(8,2)not null, 
+ tgttoget number(6,2)not null, 
+ ytdsales number(6,2)not null, 
+ remarks varchar(10), 
+ constraint chk_salesmanno check(salesmanno like 'S%'), 
+ constraint chk_salamt check(salamt!=0), 
+ constraint chk_tgttoget check(tgttoget!=0), 
+ constraint chk_ytdsales check(ytdsales!=0)); 
+
+INSERT INTO salesman_master_23 VALUES ('S00001', 'Anan', 'A/14', 'Worli', 'Mumbai', 400002, 'Maharashtra', 3000, 100, 50, 'Good');
+
+INSERT INTO salesman_master_23 VALUES ('S00002', 'Onkar', '65', 'Nariman', 'Mumbai', 400001, 'Maharashtra', 3000, 200, 100, 'Good');
+
+INSERT INTO salesman_master_23 VALUES ('S00003', 'Raj', 'P-7', 'Bandra', 'Mumbai', 400032, 'Maharashtra', 3000, 200, 100, 'Good');
+
+INSERT INTO salesman_master_23 VALUES ('S00004', 'Ashish', 'A/5', 'Juhu', 'Mumbai', 400044, 'Maharashtra', 3000, 200, 100, 'Good');
+
+SELECT * FROM salesman_master_23 
+
+table 4 ***********
+
+
+CREATE TABLE sales_order_23 (
+    orderno VARCHAR(6) PRIMARY KEY,
+    clientno VARCHAR(6) REFERENCES client_master_23,
+    orderdate DATE NOT NULL,
+    delyaddr VARCHAR(20),
+    salesmanno VARCHAR(6) REFERENCES        salesman_master_23,
+    delytype CHAR(1),
+    billyn CHAR(1),
+    delydate DATE,
+    orderstatus VARCHAR(10),
+
+    CONSTRAINT chk_orderno CHECK (orderno LIKE 'O%'),
+    CONSTRAINT chk_delytype CHECK (delytype IN ('p', 'f')),
+    CONSTRAINT chk_delydate CHECK (delydate > orderdate),
+    CONSTRAINT chk_orderstatus CHECK (orderstatus IN ('in process', 'fulfilled', 'backorder', 'cancelled'))
+);
+
+
+select * from sales_order_23 
+
+
+INSERT INTO sales_order_23 VALUES ('O19801', 'C00001', '12-JUN-04', NULL,    'S00001', 'f', 'n','28-JUL-04', 'in process');
+INSERT INTO sales_order_23 VALUES ('O19802', 'C00002', '25-JUN-04', NULL,    'S00002', 'p', 'n', '27-JUN-04', 'cancelled');
+INSERT INTO sales_order_23 VALUES ('O46865', 'C00003', '18-FEB-04',  NULL,    'S00003', 'f', 'y', 20-FEB-04', 'fulfilled');
+INSERT INTO sales_order_23 VALUES ('O19803', 'C00004', '03-APR-04', NULL,    'S00001', 'f', 'y','07-APR-04', 'fulfilled');
+INSERT INTO sales_order_23 VALUES ('O46866', 'C00005', '20-MAY-04', NULL,    'S00002', 'p', 'n', '22-MAY-04', 'cancelled');
+INSERT INTO sales_order_23 VALUES ('O19808', 'C00006', '24-MAY-04', NULL,    'S00004', 'f', 'n', '22-JUL-04' 'fulfilled');
+
+
+
+table 5 *******
+
+ SALES_ ORDER _DEATILS_23 
+
+create table sales_order_details_23 (
+orderno varchar(6) references sales_order_23, 
+productno varchar(6) references product_master_23, 
+qtyordered number(8), 
+qtydisp number(8), 
+productrate number(10,2)
+);
+
+INSERT INTO sales_order_details_23 VALUES ('O19001', 'P00001', 4, 4, 525);
+INSERT INTO sales_order_details_23 VALUES ('O19001', 'P07965', 2, 1, 8400);
+INSERT INTO sales_order_details_23 VALUES ('O19001', 'P07885', 2, 1, 5250);
+INSERT INTO sales_order_details_23 VALUES ('O19002', 'P00001', 10, 0, 525);
+INSERT INTO sales_order_details_23 VALUES ('O46865', 'P07868', 3, 3, 3150);
+INSERT INTO sales_order_details_23 VALUES ('O46865', 'P07885', 3, 1, 5250);
+INSERT INTO sales_order_details_23 VALUES ('O46865', 'P00001', 10, 10, 525);
+INSERT INTO sales_order_details_23 VALUES ('O46865', 'P0345', 4, 4, 1050);
+INSERT INTO sales_order_details_23 VALUES ('O19003', 'P03453', 2, 2, 1050);
+INSERT INTO sales_order_details_23 VALUES ('O19003', 'P06734', 1, 1, 12000);
+INSERT INTO sales_order_details_23 VALUES ('O46866', 'P07965', 1, 0, 8400);
+INSERT INTO sales_order_details_23 VALUES ('O46866', 'P07975', 1, 0, 1050);
+INSERT INTO sales_order_details_23 VALUES ('O19008', 'P00001', 10, 5, 525);
+INSERT INTO sales_order_details_23 VALUES ('O19008', 'P07975', 5, 3, 1050);
+
+genaral setting ********
+
+select translate ('12345','24','bb') from dual
+select replace ('jack and jue', 'j', 'bl') from dual
+select chr(97) from dual
+SELECT COALESCE(NULL, NULL, NULL, 'W3Schools.com', NULL, 'Example.com') from dual
+SELECT DECODE(1,1,'equal','not eqale') from dual;
+
+data control statmet ****
+
+create table student_mark(
+  id number(2) primary key,
+  name varchar2(20) not null
+)
+
+create user bhavin identified by b1; 
+grant all on student_mark to bhavin *
+grant select on student_mark to bhavin *
+
+insert into student_mark values(4,'jay');
+select * from student_mark
+
+in bhavin user in oracle ****
+select * from system.student_mark
+
+revoke command *********
+
+revoke all on student_mark from bhavin 
+
+
+view ******
+
+create view v1 as select * from student_mark
+select * from v1;
+insert into v1 values (5,'hemal');
+select * from student_mark;
+
+create view v2 as select * from student_mark with read only;
+select * from v2;
+insert into v2 values (7,'abc'); ** v2 view is only use to show data
+
+
+select * from student
+create view v1 as select * from student
+select * from v1
+delete from v1 where id = 101
+desc v1
+
+index /////////////////
+
+select * from student
+create index i1 on student (id)
+create index i2 on student (id,name)
+create unique index i3 on student (MOBILE)
+create unique index i4 on student (MOBILE,ID)
+
+drop index i1 
+
+/// if than end if
+
+declare
+   a number := 100;
+begin 
+   if a > 10 then 
+     dbms_output.put_line('a is big than 10');
+   end if;
+end;
+
+
+/// if then else end if
+declare
+   a number := 10;
+begin 
+   if a > 10 then 
+     dbms_output.put_line('a is big then 10');
+   else 
+     dbms_output.put_line('a is not big then 10');
+   end if;
+end;
+
+/// if then elsif then else end if
+
+declare
+   marks number := 100;
+begin 
+   if marks > 90 then 
+     dbms_output.put_line('a');
+   elsif marks > 80 then 
+     dbms_output.put_line('b');
+   elsif marks > 70 then 
+     dbms_output.put_line('c');
+   elsif marks > 60 then 
+     dbms_output.put_line('d');
+   elsif marks > 50 then 
+     dbms_output.put_line('e');
+   else 
+     dbms_output.put_line('f');
+   end if;
+end;

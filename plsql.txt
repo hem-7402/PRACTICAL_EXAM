@@ -1,0 +1,602 @@
+1] 
+-- print to hello bhaivn
+declare
+begin
+   dbms_output.put_line('hello bhavin');
+end;
+
+2] -- create variables
+declare
+   message varchar2(20) := 'bhavin hariyani';
+   message2 varchar2(20);
+begin
+   dbms_output.put_line('message');
+   dbms_output.put_line(:message2);
+end;
+
+3] -- sum of two number 
+declare
+   a number(3) := 10;
+   b number(3) := 10;
+   c number(5) := a + b;
+begin
+   dbms_output.put_line(c);
+end;
+
+4] -- tow variable sum input use 
+declare
+   a number(3);
+   b number(3);
+   c number(5);
+begin
+   c := :a + :b;
+   dbms_output.put_line(c);
+end;
+
+5] -- use value enter and name print
+declare
+    name varchar(20);
+begin
+    dbms_output.put_line(:name);
+end;
+
+OR ****
+
+DECLARE
+    name char(40);
+BEGIN
+   dbms_output.put_line(:name);
+END;
+
+
+6] -- arithmaric oprator perphrom
+
+DECLARE
+   a INTEGER;
+   b INTEGER;
+BEGIN
+   dbms_output.put_line('Sum of a and b : ' || (:a + :b));
+   dbms_output.put_line('Subtraction of a and b : ' || (:a - :b));
+   dbms_output.put_line('Multiplication of a and b : ' || (:a * :b));
+   dbms_output.put_line('Division of a and b : ' || (:a / :b));
+END;
+
+7]
+-- swap value
+DECLARE
+    num1 integer := 10;
+    num2 integer := 20;
+    temp integer;
+BEGIN
+   dbms_output.put_line('num1 = '|| num1 ||' num2 = '|| num2);
+   temp := num2;
+   num2 := num1;
+   num1 := temp;
+   dbms_output.put_line('num1 = '|| num1 ||' num2 = '|| num2);
+END;
+
+8]
+
+declare
+    n1 number(3) := 10;
+    n2 number(3) := 20;
+begin
+    dbms_output.put_line(n1);
+    dbms_output.put_line(n2);
+   declare
+      n1 number(3) := 50;
+      n2 number(3) := 60;
+   begin
+      dbms_output.put_line(n1);
+      dbms_output.put_line(n2);
+   end;
+end;
+
+
+9]
+declare
+    n1 constant varchar2(20) := 'bhavin';
+begin
+    dbms_output.put_line(n1);
+end;
+
+
+10] -- if 
+declare
+begin
+    if 10 > 5  then
+        dbms_output.put_line('hi');
+    end if;
+end;
+
+
+11] -- if else 
+
+declare
+    a integer := 10;
+    b integer := 20;
+begin
+    if a > b  then
+        dbms_output.put_line('a is big');
+    else
+        dbms_output.put_line('b is big');
+    end if;
+end;
+
+
+12] -- else if leader
+
+declare
+    a integer := 10;
+    b integer := 20;
+begin
+    if a > b  then
+        dbms_output.put_line('a is big');
+    elsif b > a then
+        dbms_output.put_line('b is big');
+    else
+        dbms_output.put_line('a and b is equal');
+    end if;
+end;
+
+13]
+
+DECLARE
+   grad CHAR(1) := 'b';
+BEGIN
+    CASE grad
+       WHEN 'a' THEN DBMS_OUTPUT.PUT_LINE('a grade');
+       WHEN 'b' THEN DBMS_OUTPUT.PUT_LINE('b grade');
+       WHEN 'c' THEN DBMS_OUTPUT.PUT_LINE('c grade');
+       WHEN 'd' THEN DBMS_OUTPUT.PUT_LINE('d grade');
+       WHEN 'e' THEN DBMS_OUTPUT.PUT_LINE('e grade');
+       ELSE DBMS_OUTPUT.PUT_LINE('Invalid grade');
+    END CASE;
+END;
+/
+
+
+
+14]
+
+
+DECLARE
+   marks NUMBER := 72;
+BEGIN
+   CASE
+      WHEN marks >= 90 THEN DBMS_OUTPUT.PUT_LINE('Grade A');
+      WHEN marks >= 75 THEN DBMS_OUTPUT.PUT_LINE('Grade B');
+      WHEN marks >= 60 THEN DBMS_OUTPUT.PUT_LINE('Grade C');
+      WHEN marks >= 40 THEN DBMS_OUTPUT.PUT_LINE('Grade D');
+      ELSE DBMS_OUTPUT.PUT_LINE('Fail');
+   END CASE;
+END;
+/
+
+
+15] -- BASIC LOOP
+declare
+   i integer := 1;
+begin
+    loop
+        exit when(i >= 10);
+        dbms_output.put_line(i);
+        i := i + 1;
+    end loop;
+end;
+
+16] -- while loop 
+
+declare
+   i integer := 1;
+begin
+   while i <= 10 loop
+         dbms_output.put_line(i);
+         i := i + 1;
+  end loop;
+end;
+
+18]
+
+begin
+   for i in 1..10 loop
+      dbms_output.put_line(i);
+   end loop;
+end;
+/
+
+20]
+declare
+begin
+    for i in 1..10 loop
+        dbms_output.put_line(i);
+        if i = 5 then 
+           goto stop;
+        end if;
+    end loop;
+    <<stop>>
+    dbms_output.put_line('out of loop');
+end;
+
+21] -- GENERATE NUMBER
+
+declare
+   genNum number := 5;
+   stNum number := 1;
+   endNum number := 100;
+begin
+     dbms_output.put_line('enter generate step of  number : '|| genNum);
+     dbms_output.put_line('enter start number : '|| stNum);
+     dbms_output.put_line('enter end number : '|| endNum);
+      
+     while stNum <= endNum loop
+          dbms_output.put_line('number is : '|| stNum); 
+          stNum := stNum + genNum;
+     end loop;
+end;
+
+22] -- factorial
+declare
+      n number := 5;
+      f number := 1;
+begin
+     for i in 1..n loop
+         f := f * i;
+     end loop;
+     dbms_output.put_line('factorial is : '||f);
+end;
+
+23] - FIBO
+declare
+      f number := 0;
+      ff number := 1;
+      fib number := 0;
+      n number := 10;
+begin
+     for i in 1..n loop
+         dbms_output.put_line(fib);
+         fib := f + ff;
+         f := ff;
+         ff := fib;
+     end loop;
+end;
+24]
+declare
+     a number := 10;
+     b number := 20;
+     c number := 30;
+     sum_val number := 0;
+     avg_val number := 0;
+begin
+     sum_val := a + b + c;
+     dbms_output.put_line('sum of : '||sum_val);
+     avg_val := sum_val / 3;
+     dbms_output.put_line('avg of : '||avg_val);
+end;
+
+25] string reverse
+
+declare 
+   name varchar2(100) := 'bhavin';
+    str varchar2(100) := '';
+begin
+    for i in reverse 1..length(name) loop
+        str := str || substr(name,i,1);
+    end loop;
+
+    dbms_output.put_line(str);
+end;
+
+26]
+declare 
+begin
+    for i in 1..5 loop
+       for j in 1..i loop
+            dbms_output.put('*');
+       end loop;
+     dbms_output.put_line('');
+    end loop;
+end;
+
+//// output
+
+*
+**
+***
+****
+*****
+
+27]
+
+declare 
+begin
+    for i in reverse 1..5 loop
+       for j in 1..i loop
+            dbms_output.put('*');
+       end loop;
+     dbms_output.put_line('');
+    end loop;
+end;
+
+*****
+****
+***
+**
+*
+
+28]
+
+declare 
+begin
+    for i in 1..5 loop
+       for j in i..5 loop
+            dbms_output.put(' ');
+       end loop;
+       for j in 1..i loop
+            dbms_output.put('* ');
+       end loop;
+     dbms_output.put_line('');
+    end loop;
+
+    for i in reverse 1..4 loop
+       for j in i..5 loop
+            dbms_output.put(' ');
+       end loop;
+       for j in 1..i loop
+            dbms_output.put('* ');
+       end loop;
+     dbms_output.put_line('');
+    end loop;
+end;
+
+
+     * 
+    * * 
+   * * * 
+  * * * * 
+ * * * * * 
+  * * * * 
+   * * * 
+    * * 
+     * 
+
+
+29]
+declare
+  id_ emp.id %type;
+  nm emp.name %type;
+  sal emp.salary %type;
+begin
+    select id,name,salary into id_,nm,sal from emp where rownum = 1;
+    dbms_output.put_line(id_);
+    dbms_output.put_line(nm);
+    dbms_output.put_line(sal);
+end;
+
+30]
+
+DECLARE
+  t   employee_expenses.ta%TYPE;
+  d   employee_expenses.da%TYPE;
+  tot employee_expenses.total%TYPE;
+BEGIN
+  SELECT ta, da
+  INTO t, d
+  FROM employee_expenses
+  WHERE id = 1;
+  tot := t + d;
+
+  DBMS_OUTPUT.PUT_LINE('TA = ' || t);
+  DBMS_OUTPUT.PUT_LINE('DA = ' || d);
+  DBMS_OUTPUT.PUT_LINE('TOTAL = ' || tot);
+END;
+/
+
+select * from employee_expenses;
+
+31]
+DECLARE
+  name varchar2(100):= 'bhavin';
+  name_base name %type := 'hariyani';
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('name is = ' || name || ' ' || name_base);
+END;
+
+32]
+
+DECLARE
+  tp product.pro_total_price %type;
+  p product.pro_price %type;
+  g product.pro_gst %type;
+  i number:= 1;
+BEGIN
+  select pro_price,pro_gst into p,g from product where id = i;
+  tp := p + (p * g / 100);
+  update product set pro_total_price = tp where id = i; 
+  dbms_output.put_line(tp);
+END;	
+
+select * from product 
+create table product(
+   id number(10,2) primary key,
+   pro_name varchar2(100) not null,
+   pro_price number(10,4) not null,
+   pro_gst number(10,3) not null,
+   pro_total_price number(10,4) not null
+);
+
+INSERT INTO product (id, pro_name, pro_price, pro_gst, pro_total_price)
+VALUES (1, 'Laptop', 45000.5000, 18.000, 0);
+
+INSERT INTO product (id, pro_name, pro_price, pro_gst, pro_total_price)
+VALUES (2, 'Mobile', 22000.7500, 12.000, 0);
+
+INSERT INTO product (id, pro_name, pro_price, pro_gst, pro_total_price)
+VALUES (3, 'Tablet', 15000.2500, 5.000, 0);
+
+INSERT INTO product (id, pro_name, pro_price, pro_gst, pro_total_price)
+VALUES (4, 'Headphones', 2500.9900, 18.000, 0);
+
+INSERT INTO product (id, pro_name, pro_price, pro_gst, pro_total_price)
+VALUES (5, 'Smart Watch', 6000.0000, 12.000,
+ 0);
+
+33]
+
+DECLARE
+  my product %rowtype;
+BEGIN
+  select * into my from product where id = 1;
+
+  dbms_output.put_line('id is :'||my.ID);
+ dbms_output.put_line('id is :'||my.pro_name);
+END;	
+
+select * from product 
+
+34]
+
+DECLARE
+    e_nm emp.name%TYPE;
+    e_sl emp.salary%TYPE;
+    CURSOR c1 IS SELECT name, salary FROM emp;
+BEGIN
+    OPEN c1;
+    FETCH c1 INTO e_nm, e_sl;
+    DBMS_OUTPUT.PUT_LINE('Employee: ' || e_nm || '  Salary: ' || e_sl);
+
+    FETCH c1 INTO e_nm, e_sl;
+    DBMS_OUTPUT.PUT_LINE('Employee: ' || e_nm || '  Salary: ' || e_sl);
+
+
+    FETCH c1 INTO e_nm, e_sl;
+    DBMS_OUTPUT.PUT_LINE('Employee: ' || e_nm || '  Salary: ' || e_sl);
+    CLOSE c1;
+END;
+/
+
+35]
+
+
+DECLARE
+   v_nm emp.name %type;
+BEGIN
+   select  name into v_nm from emp where rownum= 1;
+   dbms_output.put_line('name is ' || v_nm);
+EXCEPTION 
+   when NO_DATA_FOUND then
+        dbms_output.put_line('data not found ');
+   when OTHERS then
+        dbms_output.put_line('some resone' || SQLERRM);
+END;
+/
+
+36]
+DECLARE
+   v_result number;
+BEGIN
+  v_result := 10 / 0;
+  dbms_output.put_line('result');
+EXCEPTION 
+   when ZERO_DIVIDE then
+        dbms_output.put_line('data not found ');
+END;
+/
+
+37]
+
+DECLARE
+   v_name emp.name %type;
+BEGIN
+  select name into v_name from emp where id = 12;
+  dbms_output.put_line('name is ' || v_name);
+EXCEPTION 
+   when TOO_MANY_ROWS then
+        dbms_output.put_line('many rows found');
+END;
+/
+
+38] procedure **** 
+
+create or replace procedure hello
+as 
+begin 
+   dbms_output.put_line('hello');
+end;
+
+begin
+    hello;
+end;
+
+39]
+
+create or replace procedure hello(nm in number)
+as 
+begin 
+   dbms_output.put_line(nm);
+end;
+
+begin
+    hello(10);
+end;
+
+
+40]
+
+create or replace procedure hello(nm in number,nmre out number)
+as 
+  a number := 10;
+begin 
+   nmre := a * nm;
+end;
+
+declare
+   Num number;
+begin
+    hello(10,Num);
+    dbms_output.put_line(Num);
+end;
+
+41]
+
+create or replace function getSalary(
+    p_salary in number
+) return number
+is 
+   v_salary number;
+begin
+   v_salary := p_salary * 12;
+   return v_salary;
+end;
+
+declare 
+   salary number := 2000;
+begin
+  dbms_output.put_line(getSalary(salary));
+end;
+
+
+42]
+
+create table t (id number primary key,name varchar(20) not null,salary number(5,2) not null);
+
+insert into t values(1,'abc',200);
+insert into t values(2,'def',400);
+insert into t values(3,'xyz',900);
+insert into t values(4,'xyz',500);
+
+create table t1 (id number primary key,name varchar(20) not null,salary number(5,2) not null);
+
+create or replace trigger tr 
+before delete or update or insert on t
+for each row
+begin 
+    insert into t1 values(:old.id,:old.name,:old.salary);
+end;
+
+
+select * from t1
+
+select * from t
+
+delete from t where id = 1;
